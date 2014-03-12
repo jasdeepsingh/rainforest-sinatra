@@ -5,6 +5,11 @@ gem "sinatra", "~> 1.4"
 gem "pry"
 gem "tux"
 gem "foreman"
+gem "sinatra-cross_origin", "~> 0.3.1"
+gem 'rest-client'
+gem 'httparty'
+gem 'json'
+gem 'sinatra-contrib'
 
 group 'production' do
   gem 'thin'

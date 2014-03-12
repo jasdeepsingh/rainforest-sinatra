@@ -2,7 +2,7 @@
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" data-ng-app='rainforestApp'> <!--<![endif]-->
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
@@ -10,12 +10,28 @@
   <title>RainforestMac</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+  <script type="text/javascript" src="/javascripts/main.js"></script>
   <link rel="stylesheet" href="/stylesheets/main.css" />
 </head>
 
-<body>
+<body ng-controller='MainCtrl'>
   <div class="wrapper">
-    <h1>hello world</h1>
+
+    <h1 class='loading-msg' ng-show='loading'>Loading...</h1>
+
+    <nav class='header' ng-repeat='site in sites'>
+      <div>
+        <section class="logo">
+          <i class="fa" ng-class="{ 'fa-circle': site.failed, 'fa-spin fa-spinner': site.in_progress, 'fa-check': site.passed, 'fa-question-circle': true }"></i>
+        </section>
+        <section class="support">
+          <a href="/">{{site.name}}</a>
+        </section>
+      </div>
+    </div>
+
   </div>
 
 </body>
