@@ -16,7 +16,8 @@
   <link rel="stylesheet" href="/stylesheets/main.css" />
 </head>
 
-<body ng-controller='MainCtrl'>
+<body ng-controller='MainCtrl' ng-init="apiToken = '<%= @api_token %>'">
+  
   <div class="wrapper">
 
     <h1 class='loading-msg' ng-show='loading'>Loading...</h1>
@@ -27,7 +28,7 @@
           <i class="fa" ng-class="{ 'fa-circle': site.failed, 'fa-spin fa-spinner': site.in_progress, 'fa-check': site.passed, 'fa-question-circle': true }"></i>
         </section>
         <section class="support">
-          <a href="/">{{site.name}}</a>
+          <i>{{site.name}}</i>
         </section>
       </div>
     </div>

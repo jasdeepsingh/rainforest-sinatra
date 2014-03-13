@@ -3,8 +3,8 @@ var rainforestApp = angular.module("rainforestApp", [])
 .factory('RainforestService', ['$http', function($http) {
 
   return {
-    status: function(callback) {
-      $http.get("/status/token").success(callback);
+    status: function(apiToken, callback) {
+      $http.get("/status/" + apiToken ).success(callback);
     }
 
   }
@@ -14,10 +14,14 @@ var rainforestApp = angular.module("rainforestApp", [])
 .controller('MainCtrl', ['$scope', 'RainforestService', function($scope, RainforestService) {
 
   $scope.loading = true;
+  
+  $scope.$watch('apiToken', function() {
 
-  RainforestService.status(function(result) {
-    $scope.sites = result;
-    $scope.loading = false;
+    RainforestService.status($scope.apiToken, function(result) {
+      $scope.sites = result;
+      $scope.loading = false;
+    });
+
   });
 
 }])
