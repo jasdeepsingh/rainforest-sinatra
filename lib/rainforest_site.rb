@@ -16,13 +16,11 @@ class RainforestSite
   end
 
   def failed
-    index = @test_states.index('failed') 
-    index ? index >= 0 : false
+    @test_states.index('failed') ? true : false
   end
 
   def in_progress
-    index = @test_states.index('no_result') 
-    index ? index >= 0 : false
+    @test_states.index('no_result') ? true : false
   end
 
   def unknown_status
