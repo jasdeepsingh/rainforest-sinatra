@@ -8,15 +8,24 @@ class RainforestSite
   end
 
   def passed
-    @test_states.size > 0 ? @test_states.all? { |state| state == 'passed' } : false
+    uniq_test_states = @test_states.uniq
+    # there are enumerables like detect? and all?
+    # but this seems more efficient
+    uniq_test_states.size && uniq_test_states.index('passed') + 1
   end
 
   def failed
-    @test_states.any? {|state| state == 'failed' }
+    index = @test_states.index('failed') 
+    index ? index >= 0 : false
   end
 
   def in_progress
-    @test_states.any? {|state| state == 'no_result' }
+    index = @test_states.index('no_result') 
+    index ? index >= 0 : false
+  end
+
+  def unknown_status
+    [passed, failed, in_progress].all?(false)
   end
 
   def to_json(options = {})
@@ -24,7 +33,8 @@ class RainforestSite
       name: @name, 
       passed: passed,
       failed: failed,
-      in_progress: in_progress
+      in_progress: in_progress,
+      unknown: unknown_status
     }.to_json
   end
 

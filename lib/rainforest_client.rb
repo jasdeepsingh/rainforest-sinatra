@@ -8,7 +8,11 @@ class RainforestClient
   end
 
   def get(resource)
-    response = HTTParty.get(BASE_URL + resource, headers: { 'CLIENT_TOKEN' => @api_token }, verify: false)
+    response = HTTParty.get(
+      BASE_URL + resource, 
+      headers: { 'CLIENT_TOKEN' => @api_token }, 
+      verify: false
+    )
     JSON.parse(response.body)
   end
 

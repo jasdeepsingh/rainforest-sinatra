@@ -25,7 +25,7 @@
     <nav class='header' ng-repeat='site in sites'>
       <div>
         <section class="logo">
-          <i class="fa" ng-class="{ 'fa-circle': site.failed, 'fa-spin fa-spinner': site.in_progress, 'fa-check': site.passed, 'fa-question-circle': true }"></i>
+          <i class="fa" ng-class="{ 'fa-circle': site.failed, 'fa-spin fa-spinner': site.in_progress, 'fa-check': site.passed, 'fa-question-circle': site.unknown }"></i>
         </section>
         <section class="support">
           <i>{{site.name}}</i>
