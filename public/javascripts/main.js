@@ -11,7 +11,7 @@ var rainforestApp = angular.module("rainforestApp", [])
 
 }])
 
-.controller('MainCtrl', ['$scope', 'RainforestService', function($scope, RainforestService) {
+.controller('MainCtrl', ['$scope', '$timeout', 'RainforestService', function($scope, $timeout, RainforestService) {
 
   $scope.loading = true;
   
@@ -23,5 +23,9 @@ var rainforestApp = angular.module("rainforestApp", [])
     });
 
   });
+
+  $timeout(function() {
+    window.location.reload();
+  }, 2 * 60 * 1000);
 
 }])
